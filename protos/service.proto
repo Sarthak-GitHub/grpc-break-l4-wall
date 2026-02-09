@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package discovery;
+
+service SmartService {
+  rpc CallMe (Empty) returns (ServerInfo);
+}
+
+message Empty {}
+
+message ServerInfo {
+  string server_id = 1;
+}
