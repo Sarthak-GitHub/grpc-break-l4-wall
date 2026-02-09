@@ -1,0 +1,19 @@
+services:
+  server:
+    build: ./server
+    # Scaling to 3 instances mimics a K8s deployment
+    deploy:
+      replicas: 3
+    networks:
+      - grpc-net
+
+  client:
+    build: ./client
+    depends_on:
+      - server
+    networks:
+      - grpc-net
+
+networks:
+  grpc-net:
+    driver: bridge
